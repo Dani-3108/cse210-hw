@@ -12,20 +12,39 @@ public class ChecklistGoal :Goal
         _bonus = bonus;
     }
     //Methods
-    public override void RecordEvent()
+    public override int RecordEvent()
     {
+        //adds one each time the user records and activity on the checklist goals
+        _amountCompleted++;
+        //verifies if the goal is complete and adds the bonus
+        if (IsComplete())
+        {
+            return GetPoints() + _bonus;
+        }
+        else
+        {
+            return GetPoints();
+        }
 
     }
     public override bool IsComplete()
     {
-        return false;
+        if (_target == _amountCompleted)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
     public override string GetDetailsString()
     {
-        return "";
+        //Calls the getDetailsString class from the parent element and just adds the checklist from this goal
+        return base.GetDetailsString()+$"--(Completed {_amountCompleted}/{_target} times)";
     }
     public override string GetStringRepresentation()
     {
-        return "";
+        return $"ChecklistGoal:{GetName()},{GetDescription()},{GetPoints()},{_bonus},{_amountCompleted},{_target}";
     }
 }
