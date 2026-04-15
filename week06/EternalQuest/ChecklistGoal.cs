@@ -47,4 +47,8 @@ public class ChecklistGoal :Goal
     {
         return $"ChecklistGoal:{GetName()},{GetDescription()},{GetPoints()},{_bonus},{_amountCompleted},{_target}";
     }
+    public void SetAmountCompleted(int value)
+    {
+        _amountCompleted = value;
+    }
 }

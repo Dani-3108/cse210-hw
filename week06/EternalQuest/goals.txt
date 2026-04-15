@@ -1,0 +1,3 @@
+900
+SimpleGoal:read,read books,500,True
+EternalGoal:run,run each day,400
